@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bihk4m5v48fhh"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_ina40"]
+[ext_resource type="FontFile" uid="uid://cu4lf4od2owng" path="res://Assets/font/FlappyBird.ttf" id="2_hbi3x"]
+[ext_resource type="Texture2D" uid="uid://x218sp1de1n0" path="res://Assets/gameover.png" id="3_44yy6"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ina40")
+
+[node name="MarginContaine" type="MarginContainer" parent="."]
+offset_top = 95.0
+offset_right = 292.0
+offset_bottom = 517.0
+theme_override_constants/margin_top = 32
+
+[node name="Game Over Box" type="VBoxContainer" parent="MarginContaine"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContaine/Game Over Box"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_44yy6")
+
+[node name="Panel" type="Panel" parent="MarginContaine/Game Over Box"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContaine/Game Over Box/Panel"]
+offset_left = 5.0
+offset_top = 36.0
+offset_right = 193.0
+offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("2_hbi3x")
+theme_override_font_sizes/font_size = 26
+text = "Restart
+"
+
+[node name="Points Label" type="Label" parent="."]
+texture_filter = 1
+offset_top = 18.0
+offset_right = 292.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("2_hbi3x")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContaine/Game Over Box/Panel/Button" to="." method="_on_button_pressed"]
